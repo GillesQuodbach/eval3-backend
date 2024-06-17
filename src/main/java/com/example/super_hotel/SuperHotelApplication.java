@@ -11,11 +11,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootApplication
+// ! LA SECURITE EST DESACTIVEE
+//@SpringBootApplication
+@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 public class SuperHotelApplication implements CommandLineRunner {
 	@Value("${app.home}")
 	private String userHome;
