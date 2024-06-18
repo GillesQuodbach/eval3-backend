@@ -28,11 +28,11 @@ public class CityController {
     HotelRepository hotelRepository;
 
 
-    @GetMapping("/city")
+    @GetMapping("/cities")
     public List<City> getAllCities(){
         return iBusinessImpl.getCities();
     }
-    @PostMapping("city")
+    @PostMapping("cities")
     public ResponseEntity<City> saveNewHotel(@RequestBody City city){
         City city1 = iBusinessImpl.saveCity(city);
         if(Objects.isNull(city1)){
