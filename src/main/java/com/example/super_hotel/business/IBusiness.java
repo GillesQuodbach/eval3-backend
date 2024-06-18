@@ -24,4 +24,6 @@ public interface IBusiness {
     // * Image methods
     Resource loadImageAsResource(String imgName) throws Exception;
     String getContentType(String imgName) throws Exception;
+
+
 }

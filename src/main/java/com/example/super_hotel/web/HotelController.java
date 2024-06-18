@@ -72,4 +72,9 @@ public class HotelController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping("/hotels/city/{id}")
+    public List<Hotel> getHotelsByCity(@PathVariable("id") Long id){
+        return iBusinessImpl.getHotelsByCity(id);
+    }
 }
