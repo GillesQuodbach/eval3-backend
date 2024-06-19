@@ -11,7 +11,6 @@ public interface IBusiness {
     // * Hotel methods
     List<Hotel> getHotels();
     List<Hotel> getHotelsByCity(Long cityId);
-
     Optional<Hotel> getHotelById(Long hotelId);
     Hotel saveHotel(Hotel hotel);
 

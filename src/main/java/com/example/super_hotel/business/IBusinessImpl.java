@@ -75,7 +75,9 @@ public class IBusinessImpl implements IBusiness{
     @Override
     public Resource loadImageAsResource(String imgName) throws Exception {
         Path imagePath = Paths.get(BASE_PATH).resolve(imgName);
+        System.out.println(imagePath);
         Resource resource = new UrlResource(imagePath.toUri());
+        System.out.println(resource);
         if (resource.exists() && resource.isReadable()) {
             return resource;
         } else {
