@@ -91,7 +91,7 @@ public class HotelController {
         }
     }
 
-    @PostMapping("/imaes")
+    @PostMapping("/images")
     public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("file") MultipartFile file) {
         Map<String, String> response = new HashMap<>();
 
