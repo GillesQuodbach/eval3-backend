@@ -4,6 +4,9 @@ import com.example.super_hotel.dao.CityRepository;
 import com.example.super_hotel.dao.HotelRepository;
 import com.example.super_hotel.entities.City;
 import com.example.super_hotel.entities.Hotel;
+import com.example.super_hotel.security.entities.AppRole;
+import com.example.super_hotel.security.entities.AppUser;
+import com.example.super_hotel.security.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,10 +16,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 import java.util.ArrayList;
 import java.util.List;
+@SpringBootApplication
 
-// ! LA SECURITE EST DESACTIVEE
-//@SpringBootApplication
-@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 public class SuperHotelApplication implements CommandLineRunner {
 	@Value("${app.home}")
 	private String userHome;
@@ -26,14 +27,17 @@ public class SuperHotelApplication implements CommandLineRunner {
 	@Autowired
 	private CityRepository cityRepository;
 
+	@Autowired
+	private AccountService accountService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(SuperHotelApplication.class, args);
 	}
-
 	@Override
 	public void run(String... args) throws Exception {
 		generadtedData();
+		generateUsersRoles();
 	}
 
 	public void generadtedData(){
@@ -74,6 +78,21 @@ public class SuperHotelApplication implements CommandLineRunner {
 		hotelRepository.save(new Hotel(null, "Velvet Sky Resort", "0804050668", 4,21,100,"default.jpg", Rome));
 		hotelRepository.save(new Hotel(null, "Cascade Falls Lodge", "0804050668", 3,25,200,"default.jpg", Berlin));
 		hotelRepository.save(new Hotel(null, "Heavenly Harbor Hotel", "0804050668", 4,30,121,"default.jpg", Madrid));
+	}
+
+	private void generateUsersRoles(){
+		accountService.saveUser(new AppUser(null,"gilles", "1234", new ArrayList<>()));
+		accountService.saveUser(new AppUser(null,"lara", "1234", new ArrayList<>()));
+		accountService.saveUser(new AppUser(null,"lary", "1234", new ArrayList<>()));
+
+		accountService.saveRole(new AppRole(null,"SUPERVISOR"));
+		accountService.saveRole(new AppRole(null,"USER"));
+		accountService.saveRole(new AppRole(null,"MANAGER"));
+
+		accountService.addRoleToUser("gilles", "SUPERVISOR");
+		accountService.addRoleToUser("lara", "MANAGER");
+		accountService.addRoleToUser("lary", "USER");
+
 	}
 
 }
