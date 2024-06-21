@@ -25,8 +25,4 @@ public class User implements Serializable {
     private String phone;
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    @ToString.Exclude
-    @JsonIgnore
-    private List<Order> orders;
 }

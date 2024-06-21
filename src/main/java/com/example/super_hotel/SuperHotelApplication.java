@@ -4,8 +4,6 @@ import com.example.super_hotel.dao.CityRepository;
 import com.example.super_hotel.dao.HotelRepository;
 import com.example.super_hotel.entities.City;
 import com.example.super_hotel.entities.Hotel;
-import com.example.super_hotel.entities.Order;
-import com.example.super_hotel.entities.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -42,8 +40,6 @@ public class SuperHotelApplication implements CommandLineRunner {
 
 		// Création des listes
 		List<Hotel> hotelsList = new ArrayList<>();
-		List<Order> ordersList = new ArrayList<>();
-		List<OrderItem> orderItem = new ArrayList<>();
 
 		// Création des villes
 		City Paris = new City("Paris",hotelsList);
